@@ -1,13 +1,16 @@
-FROM node:20-alpine
+FROM node:20
 
 WORKDIR /app
 
 # Install OpenClaw globally
 RUN npm install -g openclaw
 
-# Railway provides PORT dynamically
+# Railway injects PORT at runtime
+ENV PORT=8080
+
 EXPOSE 8080
 
-# Start OpenClaw using CLI (doc-supported)
-CMD ["sh", "-c", "npx openclaw up"]
+# Run OpenClaw as the container entrypoint (not via node, not via npx)
+ENTRYPOINT ["openclaw"]
+CMD ["up"]
 

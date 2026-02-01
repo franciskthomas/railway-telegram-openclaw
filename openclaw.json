@@ -2,14 +2,14 @@
   "channels": {
     "telegram": {
       "mode": "webhook",
-      "webhookPath": "/telegram",
-      "timeoutSeconds": 60
+      "webhookPath": "/telegram"
     }
   },
   "gateway": {
     "bind": "0.0.0.0:${PORT}"
   }
 }
+
 
 
 

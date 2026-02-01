@@ -1,0 +1,11 @@
+{
+  "name": "railway-telegram-openclaw",
+  "private": true,
+  "scripts": {
+    "start": "openclaw up"
+  },
+  "dependencies": {
+    "openclaw": "*"
+  }
+}
+

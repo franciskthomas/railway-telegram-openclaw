@@ -3,14 +3,12 @@ FROM node:20
 WORKDIR /app
 
 # Install OpenClaw globally
-RUN npm install -g openclaw
+RUN npm install -g openclaw \
+ && ln -s $(npm bin -g)/openclaw /usr/bin/openclaw
 
-# Railway injects PORT at runtime
 ENV PORT=8080
-
 EXPOSE 8080
 
-# Run OpenClaw as the container entrypoint (not via node, not via npx)
-ENTRYPOINT ["openclaw"]
+ENTRYPOINT ["/usr/bin/openclaw"]
 CMD ["up"]
 

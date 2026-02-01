@@ -1,6 +1,14 @@
 FROM node:20-alpine
+
+# Install OpenClaw globally
 RUN npm install -g openclaw
+
 WORKDIR /app
-EXPOSE 18789
-CMD ["openclaw", "up"]
+
+# Railway provides PORT dynamically
+EXPOSE 8080
+
+# IMPORTANT: explicitly call the openclaw binary
+CMD ["sh", "-c", "/usr/local/bin/openclaw up"]
+
 

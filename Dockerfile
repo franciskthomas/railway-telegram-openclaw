@@ -5,10 +5,13 @@ WORKDIR /app
 # Install OpenClaw globally
 RUN npm install -g openclaw
 
-# Expose Railway’s dynamic port
+# IMPORTANT: ensure npm global bin is on PATH for Railway runtime
+ENV PATH="/usr/local/bin:${PATH}"
+
+# Railway injects PORT
 ENV PORT=8080
 EXPOSE 8080
 
-# Run OpenClaw CLI as a service
-CMD ["sh", "-c", "openclaw up"]
+# Start OpenClaw (shell form so PATH is respected)
+CMD openclaw up
 
